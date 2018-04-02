@@ -1,0 +1,6 @@
+<select class="form-control m-select2" id="select2" name="param">
+    <option></option>
+    <option *ngFor="let option of options" [value]="option[returnKey]" [selected]="option.selected">
+        {{option[displayKey]}}
+    </option>
+</select>

@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+.white--portlet{
+  -webkit-box-shadow: 0px 0px 11px 1px rgba(78, 76, 76, 0.14);
+  -moz-box-shadow: 0px 0px 11px 1px rgba(78, 76, 76, 0.14);
+  box-shadow: 0px 0px 11px 1px rgba(78, 76, 76, 0.14) ;
+}
+.rounded-hours{
+  background: #f7f8fa;
+  padding: 0;
+  height: 100px;
+  width: 100px;
+  display: flex!important;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  margin: auto;
+}

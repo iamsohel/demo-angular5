@@ -1,0 +1,326 @@
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Add New Employee
+                    <small>
+                        Required fields are marked *. Please fill out all the required fields
+                    </small>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <div class="row">
+            <div class="col-md-8">
+                <form [formGroup]="employeeForm" novalidate name="addEmployeeForm"
+                      (ngSubmit)="addEmployee(employeeForm)">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <label for="first_name">
+                                    First Name
+                                    <small>*</small>
+                                </label>
+                                <input name="first_name" class="form-control m-input" id="first_name" placeholder=""
+                                       type="text" required formControlName="first_name">
+                                <app-form-errors [messages]="employeeForm.controls.first_name" class="text-danger">
+                                    <app-form-error-message [message]="'required'">
+                                        First Name is required
+                                    </app-form-error-message>
+                                </app-form-errors>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <label for="first_name">
+                                    Last Name
+                                    <small>*</small>
+                                </label>
+                                <input name="last_name" class="form-control m-input" id="last_name" placeholder=""
+                                       type="text" required formControlName="last_name">
+                                <app-form-errors [messages]="employeeForm.controls.last_name" class="text-danger">
+                                    <app-form-error-message [message]="'required'">
+                                        First Name is required
+                                    </app-form-error-message>
+                                </app-form-errors>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group">
+                                <label for="first_name">
+                                    Email
+                                    <small>*</small>
+                                </label>
+                                <input name="email" class="form-control m-input" id="email" placeholder="" type="email"
+                                       formControlName="email">
+                                <app-form-errors [messages]="employeeForm.controls.email" class="text-danger">
+                                    <app-form-error-message [message]="'required'">
+                                        Email is required
+                                    </app-form-error-message>
+                                    <app-form-error-message [message]="'email'">
+                                        Please enter a valid email
+                                    </app-form-error-message>
+                                </app-form-errors>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <label for="first_name">
+                                    Company Name
+                                    <small>*</small>
+                                </label>
+
+                                <select-2 [options]="companyNames" [control]="employeeForm.controls.company_name"
+                                          [displayKey]="'name'" [returnKey]="'name'"
+                                          [selectConfig]="compnaySelectOptions" (OnSelected)="onCompanySelected($event)"></select-2>
+                                <app-form-errors [messages]="employeeForm.controls.company_name" class="text-danger">
+                                    <app-form-error-message [message]="'required'">
+                                        First Name is required
+                                    </app-form-error-message>
+                                </app-form-errors>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <label for="first_name">
+                                    Job Title
+                                    <small>*</small>
+                                </label>
+                                <input name="job_title" class="form-control m-input" id="job_title" placeholder=""
+                                       type="text" required formControlName="job_title">
+                                <app-form-errors [messages]="employeeForm.controls.job_title" class="text-danger">
+                                    <app-form-error-message [message]="'required'">
+                                        Job title is required
+                                    </app-form-error-message>
+                                </app-form-errors>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 m--margin-top-20 m--margin-bottom-20">
+                            <h5>Contact Details</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="phone" class="form-control m-input" id="phone" placeholder="Phone"
+                                       type="text" formControlName="phone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="home_phone" class="form-control m-input" id="home_phone"
+                                       placeholder="Home Phone" type="text" formControlName="home_phone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="mobile" class="form-control m-input" id="mobile" placeholder="Mobile"
+                                       type="text" formControlName="mobile">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="website" class="form-control m-input" id="website" placeholder="Website"
+                                       type="text" formControlName="website">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="fax" class="form-control m-input" id="fax" placeholder="Fax" type="text"
+                                       formControlName="fax">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="facebook" class="form-control m-input" id="facebook" placeholder="Facebook"
+                                       type="text" formControlName="facebook">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="google" class="form-control m-input" id="google" placeholder="Google"
+                                       type="text" formControlName="google">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="twitter" class="form-control m-input" id="twitter" placeholder="Twitter"
+                                       type="text" formControlName="twitter">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-form__group">
+                                <input name="linkedin" class="form-control m-input" id="linkedin"
+                                       placeholder="Linked in" type="text" formControlName="linkedin">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="m_repeater">
+                        <div class="row">
+                            <div class="col-md-12 m--margin-top-20 m--margin-bottom-20">
+                                <h5>
+                                    Address Information
+
+                                </h5>
+
+
+                            </div>
+                        </div>
+                        <div formArrayName="address">
+                            <div *ngFor="let adrs of employeeForm.get('address').controls; let i=index"
+                                 class="fadeIn animated">
+                                <div [formGroupName]="i">
+                                    <div class=" d-flex m--margin-10 justify-content-end align-items-center">
+                                        <div class="">
+                                            <span class="m-badge m-badge--info "> {{i + 1}}</span>
+                                        </div>
+                                        <a *ngIf="employeeForm.get('address').controls.length > 1"
+                                           (click)="removeAddress(i)"
+                                           class="btn btn-secondary m-btn  m-btn--icon m-btn--icon-only m-btn--pill">
+                                            <i class="la la-times"></i>
+                                        </a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group m-form__group">
+                                                <input type="text" class="form-control m-input" name="address_type"
+                                                       id="address_type" rows="3"
+                                                       placeholder="Address Type*" formControlName="address_type">
+                                                <app-form-errors [messages]="adrs.get('address_type')" class="text-danger">
+                                                    <app-form-error-message [message]="'required'">
+                                                        Address Type is required
+                                                    </app-form-error-message>
+                                                </app-form-errors>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group m-form__group">
+                                            <textarea class="form-control m-input" name="address_line" id="address_line"
+                                                      rows="3"
+                                                      placeholder="Address Line*"
+                                                      formControlName="address_line"></textarea>
+                                                <app-form-errors [messages]="adrs.get('address_line')" class="text-danger">
+                                                    <app-form-error-message [message]="'required'">
+                                                        Address Line is required
+                                                    </app-form-error-message>
+                                                </app-form-errors>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group m-form__group">
+                                                <input name="city" class="form-control m-input" id="city"
+                                                       placeholder="City"
+                                                       type="text" formControlName="city">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group m-form__group">
+                                                <input name="state" class="form-control m-input" id="state"
+                                                       placeholder="State" type="text" formControlName="state">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group m-form__group">
+                                                <input name="zip_code" class="form-control m-input" id="zip_code"
+                                                       placeholder="Zip Code" type="text" formControlName="zip_code">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group m-form__group">
+                                                <input name="country" class="form-control m-input" id="country"
+                                                       placeholder="Country" type="text" formControlName="country">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="btn btn-metal m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill pull-right"
+                                   (click)="addAddress()">
+                                    <i class="la la-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 m--margin-top-20 m--margin-bottom-20">
+                            <h5>Visibility</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="m-radio-list">
+                                <label class="m-radio m-radio--brand">
+                                    <input name="visibility" type="radio"
+                                           [value]="1" formControlName="visibility">
+                                    Everyone
+                                    <span></span>
+                                </label>
+                                <label class="m-radio m-radio--brand">
+                                    <input name="visibility" type="radio"
+                                           [value]="2" formControlName="visibility">
+                                    Selected User
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="employeeForm.controls.visibility.value==2">
+                            <app-users-search [dataUrl]="userDataUrl" [allowClear]="true"
+                                              (OnSelected)="onUserSelect($event)"
+                                              [headers]="{Authorization:'Bearer '+token}"
+                                              [control]="employeeForm.controls.users"></app-users-search>
+
+                            <app-form-errors [messages]="employeeForm.controls.users" class="text-danger">
+                                <app-form-error-message [message]="'required'">
+                                    Please select at least one user
+                                </app-form-error-message>
+                                <app-form-error-message [message]="'minLength'">
+                                    Please select at least one user
+                                </app-form-error-message>
+                            </app-form-errors>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                          <div class="m-form__group--inline pt-3 pb-3 justify-content-between flex-row align-items-center" style="display: flex">
+                              <label class="font-weight-bold">Send Activation Email??</label>
+                              <app-bs-switch [onText]="'Yes'" [offText]="'No'" [data]="false" (onChange)="onActivationStatusChanged($event)"></app-bs-switch>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 m--margin-top-20 ">
+                            <button class="btn m-btn--uppercase m-btn btn-info m-btn--air m-btn--pill" type="submit"
+                                    [disabled]="employeeForm.invalid">Save
+                            </button>
+                            <button class="btn m-btn--uppercase m-btn btn-info m-btn--air m-btn--pill" type="button" (click)="addAnother(employeeForm)"
+                                    [hidden]="employeeForm.invalid">Save & Create Another
+                            </button>
+                            <button (click)="reset()"
+                                    class="btn m-btn--uppercase m-btn btn-secondary m-btn--air m-btn--pill"
+                                    type="submit" [disabled]="!employeeForm.dirty&&!employeeForm.touched">Reset
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

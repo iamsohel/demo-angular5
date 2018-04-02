@@ -1,0 +1,196 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title">
+                <a [routerLink]="'.'">Employee Details</a>
+            </h3>
+        </div>
+        <div>
+            <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
+                 data-dropdown-toggle="hover" aria-expanded="true">
+                <a href="#"
+                   class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
+                    <i class="la la-plus m--hide"></i>
+                    <i class="la la-ellipsis-h"></i>
+                </a>
+                <div class="m-dropdown__wrapper">
+                    <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                    <div class="m-dropdown__inner">
+                        <div class="m-dropdown__body">
+                            <div class="m-dropdown__content">
+                                <ul class="m-nav">
+                                    <li class="m-nav__section m-nav__section--first m--hide">
+										<span class="m-nav__section-text">
+											Quick Actions
+										</span>
+                                    </li>
+                                    <li class="m-nav__item">
+                                        <a [routerLink]="'.'" class="m-nav__link">
+                                            <i class="m-nav__link-icon flaticon-profile-1"></i>
+                                            <span class="m-nav__link-text">
+												Profile
+											</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--END SUBHEAD-->
+<!--BEGIN CONTENT-->
+<div class="m-content">
+    <div class="row">
+        <div class="col-xl-3 col-lg-4">
+            <div class="m-portlet m-portlet--full-height   m-portlet--rounded white--portlet">
+                <div class="m-portlet__body">
+                    <div class="m-card-profile">
+                        <div class="m-card-profile__title m--hide">
+                            Your Profile
+                        </div>
+                        <div class="m-card-profile__pic">
+                            <div class="m-card-profile__pic-wrapper">
+                                <img src="./assets/app/media/img/users/user4.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div class="m-card-profile__details">
+							<span class="m-card-profile__name">
+								{{employee.first_name+' '+employee.last_name}}
+							</span>
+                            <a href="" class="m-card-profile__email m-link">
+                                {{employee.email}}
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
+                        <li class="m-nav__separator m-nav__separator--fit"></li>
+                        <li class="m-nav__section m--hide">
+							<span class="m-nav__section-text">
+								Section
+							</span>
+                        </li>
+                        <li class="m-nav__item" routerLinkActive=" m-nav__item--active">
+                            <a [routerLink]="'./update'" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-edit"></i>
+                                <span class="m-nav__link-title">
+									<span class="m-nav__link-wrap">
+										<span class="m-nav__link-text">
+                                            Update Profile
+										</span>
+                                        <!--<span class="m-nav__link-badge">-->
+                                        <!--<span class="m-badge m-badge&#45;&#45;success">-->
+                                        <!--2-->
+                                        <!--</span>-->
+                                        <!--</span>-->
+									</span>
+								</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item" routerLinkActive=" m-nav__item--active">
+                            <a routerLink="/header/profile" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-share"></i>
+                                <span class="m-nav__link-text">
+									Activity
+								</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item" routerLinkActive=" m-nav__item--active">
+                            <a [routerLink]="'./history'" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-chat-1"></i>
+                                <span class="m-nav__link-text">
+									Employment History
+								</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item" routerLinkActive=" m-nav__item--active">
+                            <a routerLink="/header/profile" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-graphic-2"></i>
+                                <span class="m-nav__link-text">
+									Trainint And Certificates
+								</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item" routerLinkActive=" m-nav__item--active">
+                            <a routerLink="/header/profile" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-time-3"></i>
+                                <span class="m-nav__link-text">
+									Projects
+								</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item" routerLinkActive=" m-nav__item--active">
+                            <a routerLink="/header/profile" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-lifebuoy"></i>
+                                <span class="m-nav__link-text">
+									Tasks
+								</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item" routerLinkActive=" m-nav__item--active">
+                            <a [routerLink]="'./files'" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-file"></i>
+                                <span class="m-nav__link-text">
+									Files
+								</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="m-portlet__body-separator"></div>
+                    <div class="m-widget1 m-widget1--paddingless">
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col align-items-center justify-content-center text-center">
+                                    <h3 class="m-widget1__title pb-4">
+                                        Total Hours Worked This Week
+                                    </h3>
+                                    <span class="m-widget1__desc rounded-hours rounded-circle border-info border">
+										<h4 class="m--font-info  ">80hrs</h4>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">
+                                        This weeks pendign tasks
+                                    </h3>
+                                </div>
+                                <div class="col m--align-right">
+									<span class="m-widget1__number m--font-info">
+										30
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">
+                                        Due for today
+                                    </h3>
+                                </div>
+                                <div class="col m--align-right">
+									<span class="m-widget1__number m--font-warning">
+										6
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-8">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<!--END CONTENT-->

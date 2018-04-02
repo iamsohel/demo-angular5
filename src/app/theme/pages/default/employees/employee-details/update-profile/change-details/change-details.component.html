@@ -1,0 +1,393 @@
+<div class="form-container" style="position: relative;overflow: hidden">
+    <!--Personal Information Start-->
+    <div class="m-portlet__head m--padding-left-25">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <!--<span class="m-portlet__head-icon">-->
+                <!--<i class="flaticon-time"></i>-->
+                <!--</span>-->
+                <h3 class="m-portlet__head-text">
+                    Personal Details
+                </h3>
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <button [hidden]="!personalDetailsFrom.touched||!personalDetailsFrom.dirty"
+                            [disabled]="personalDetailsFrom.invalid"
+                            class="m-portlet__nav-link btn btn-info m-btn m-btn--pill m-btn--air"
+                            (click)="updatePersonalInfo(personalDetailsFrom)">
+                        Save Changes
+                    </button>
+                    <span *ngIf="profileUpdated"><i class="fa fa-check text-success"></i></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form [formGroup]="personalDetailsFrom"
+          class="m-form m-form--fit m-form--label-align-right m--margin-top-20 m--margin-bottom-20"
+          name="addEmployeeForm"
+          (ngSubmit)="updatePersonalInfo(personalDetailsFrom)">
+        <div class="form-group m-form__group row">
+            <div class="col-md-6">
+                <div class="">
+                    <label for="first_name">
+                        First Name
+                        <small>*</small>
+                    </label>
+                    <input name="first_name" class="form-control m-input" id="first_name" placeholder=""
+                           type="text" formControlName="first_name">
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="">
+                    <label for="first_name">
+                        Last Name
+                        <small>*</small>
+                    </label>
+                    <input name="last_name" class="form-control m-input" id="last_name" placeholder=""
+                           type="text" formControlName="last_name">
+                </div>
+            </div>
+        </div>
+        <div class=" form-group m-form__group row">
+            <div class="col-md-12">
+                <div class="">
+                    <label for="first_name">
+                        Email
+                        <small>*</small>
+                    </label>
+                    <input name="email" class="form-control m-input" id="email" placeholder=""
+                           type="text"
+                           formControlName="email">
+                </div>
+            </div>
+        </div>
+        <div class="form-group m-form__group row">
+            <div class="col-md-6">
+                <div class="">
+                    <label for="first_name">
+                        Company Name
+                        <small>*</small>
+                    </label>
+                    <select-2 *ngIf="this.employee.company_name.length" [options]="companyNames" [control]="personalDetailsFrom.controls.company_name"
+                              [displayKey]="'name'" [returnKey]="'name'"
+                              [selectConfig]="{
+                                placeholder:'Please select a company',
+                                data:{ name:this.employee.company_name }
+                              }" (OnSelected)="onCompanySelected($event)"></select-2>
+                </div>
+                <button type="submit" style="display: none"></button>
+            </div>
+            <div class="col-md-6">
+                <div class="">
+                    <label for="first_name">
+                        Job Title
+                        <small>*</small>
+                    </label>
+                    <input name="job_title" class="form-control m-input" id="job_title" placeholder=""
+                           type="text" formControlName="job_title">
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr class="mb-0">
+    <!--Personal Information End-->
+    <!--Contact Information Start-->
+    <div class="m-portlet__head m--padding-left-25">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <!--<span class="m-portlet__head-icon">-->
+                <!--<i class="flaticon-time"></i>-->
+                <!--</span>-->
+                <h3 class="m-portlet__head-text">
+                    Contact Details
+                </h3>
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <button [hidden]="!contactDetailsForm.touched&&!contactDetailsForm.dirty"
+                            [disabled]="contactDetailsForm.invalid" (click)="updateContactInfo(contactDetailsForm)"
+                            class="m-portlet__nav-link btn btn-info m-btn m-btn--pill m-btn--air">
+                        Save Changes
+                    </button>
+                    <span *ngIf="contactUpdated"><i class="fa fa-check text-success"></i></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form class="m-form m-form--fit m-form--label-align-right m--margin-top-20 m--margin-bottom-20"
+          name="addEmployeeForm"
+          [formGroup]="contactDetailsForm"
+          (submit)="updateContactInfo(contactDetailsForm)">
+        <button type="submit" style="display: none"></button>
+        <div class="form-group m-form__group row">
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Phone</label>
+                    <input name="phone" class="form-control m-input" id="phone" placeholder="Phone"
+                           type="text" formControlName="phone">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Home Phone</label>
+                    <input name="home_phone" class="form-control m-input" id="home_phone"
+                           placeholder="Home Phone" type="text" formControlName="home_phone">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Mobile</label>
+                    <input name="mobile" class="form-control m-input" id="mobile" placeholder="Mobile"
+                           type="text" formControlName="mobile">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Website</label>
+                    <input name="website" class="form-control m-input" id="website"
+                           placeholder="Website"
+                           type="text" formControlName="website">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Fax</label>
+                    <input name="fax" class="form-control m-input" id="fax" placeholder="Fax"
+                           type="text" formControlName="fax">
+                </div>
+            </div>
+        </div>
+        <div class="row form-group m-form__group">
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Facebook</label>
+                    <input name="facebook" class="form-control m-input" id="facebook"
+                           placeholder="Facebook"
+                           type="text" formControlName="facebook">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Google</label>
+                    <input name="google" class="form-control m-input" id="google" placeholder="Google"
+                           type="text" formControlName="google">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Twitter</label>
+                    <input name="twitter" class="form-control m-input" id="twitter"
+                           placeholder="Twitter"
+                           type="text" formControlName="twitter">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-inline justify-content-between m-form__group--inline">
+                    <label class="pr-2">Linkedin</label>
+                    <input name="linkedin" class="form-control m-input" id="linkedin"
+                           placeholder="Linked in" type="text" formControlName="linkedin">
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr class="mb-0">
+    <!--Contact Information End-->
+    <!--Address Start-->
+    <div class="m-portlet__head m--padding-left-25">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <!--<span class="m-portlet__head-icon">-->
+                <!--<i class="flaticon-time"></i>-->
+                <!--</span>-->
+                <h3 class="m-portlet__head-text">
+                    Address
+                </h3>
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <a href="#" (click)="toggleAddAddressForm()"
+                       class="m-portlet__nav-link btn btn-info m-btn  m-btn--icon m-btn--icon-only m-btn--pill">
+                        <i class="la la-plus"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-portlet__body--no-padding m--padding-top-5">
+        <div class="m--padding-10" *ngIf="showAddressForm">
+            <form class="m-form" [formGroup]="addressForm" (ngSubmit)="addAddress(addressForm)">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input type="text" class="form-control m-input" name="address_type"
+                                   id="address_type" rows="3"
+                                   placeholder="Address Type*" formControlName="address_type">
+                            <app-form-errors [messages]="addressForm.get('address_type')" class="text-danger">
+                                <app-form-error-message [message]="'required'">
+                                    Address Type is required
+                                </app-form-error-message>
+                            </app-form-errors>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group m--margin-bottom-10 m-form__group">
+                                            <textarea class="form-control m-input" name="address_line"
+                                                      rows="3"
+                                                      placeholder="Address Line*"
+                                                      formControlName="address_line"></textarea>
+                            <app-form-errors [messages]="addressForm.get('address_line')" class="text-danger">
+                                <app-form-error-message [message]="'required'">
+                                    Address Line is required
+                                </app-form-error-message>
+                            </app-form-errors>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="city" class="form-control m-input"
+                                   placeholder="City"
+                                   type="text" formControlName="city">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="state" class="form-control m-input"
+                                   placeholder="State" type="text" formControlName="state">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="zip_code" class="form-control m-input"
+                                   placeholder="Zip Code" type="text" formControlName="zip_code">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="country" class="form-control m-input"
+                                   placeholder="Country" type="text" formControlName="country">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class=" btn btn-info m-btn m-btn--pill m-btn--air" [disabled]="addressForm.invalid">Add</button>
+                        <button type="button" class="btn btn-secondary m-btn m-btn--pill m-btn--air" (click)="resetAddressForm()"> Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="m--padding-10" *ngIf="showEditAddressForm">
+            <form class="m-form" [formGroup]="addressForm" (ngSubmit)="updateAddress(addressForm)">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input type="text" class="form-control m-input" name="address_type"
+                                  rows="3"
+                                   placeholder="Address Type*" formControlName="address_type">
+                            <app-form-errors [messages]="addressForm.get('address_type')" class="text-danger">
+                                <app-form-error-message [message]="'required'">
+                                    Address Type is required
+                                </app-form-error-message>
+                            </app-form-errors>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group m--margin-bottom-10 m-form__group">
+                                            <textarea class="form-control m-input" name="address_line" id="address_line"
+                                                      rows="3"
+                                                      placeholder="Address Line*"
+                                                      formControlName="address_line"></textarea>
+                            <app-form-errors [messages]="addressForm.get('address_line')" class="text-danger">
+                                <app-form-error-message [message]="'required'">
+                                    Address Line is required
+                                </app-form-error-message>
+                            </app-form-errors>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="city" class="form-control m-input" id="city"
+                                   placeholder="City"
+                                   type="text" formControlName="city">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="state" class="form-control m-input" id="state"
+                                   placeholder="State" type="text" formControlName="state">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="zip_code" class="form-control m-input" id="zip_code"
+                                   placeholder="Zip Code" type="text" formControlName="zip_code">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group m-form__group  m--margin-bottom-10">
+                            <input name="country" class="form-control m-input" id="country"
+                                   placeholder="Country" type="text" formControlName="country">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class=" btn btn-info m-btn m-btn--pill m-btn--air" [disabled]="addressForm.invalid">Update</button>
+                        <button type="button" class="btn btn-secondary m-btn m-btn--pill m-btn--air" (click)="resetAddressForm()"> Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="m-list-search m--padding-top-10">
+            <div class="m-list-search__result-item" *ngFor="let adrs of employee.address;let i=index">
+                <div class="m-stack m-stack--ver m-stack--general m--padding-left-30 m--padding-right-30">
+                    <div class="m-stack__item  m-stack__item--middle m-stack__item--centerm-list-search__result-item-icon"
+                         style="width: 60px;">
+                        <i class="la la-home"></i>
+                    </div>
+                    <div class="m-stack__item  m-stack__item--middle m-stack__item--centerm-list-search__result-item-text">
+                        {{adrs.address_type}}
+                    </div>
+
+                    <div class="m-stack__item  m-stack__item--middle m-stack__item--centerm-list-search__result-message">
+                        {{adrs.address_line}}
+                    </div>
+                    <div class="m-stack__item  m-stack__item--middle m-stack__item--centerm-list-search__result-message">
+                        {{adrs.city}}
+                    </div>
+                    <div class="m-stack__item  m-stack__item--middle m-stack__item--centerm-list-search__result-message">
+                        {{adrs.zip_code}}
+                    </div>
+                    <div class="m-stack__item  m-stack__item--middle m-stack__item--centerm-list-search__result-message">
+                        {{adrs.country}}
+                    </div>
+                    <div class="m-stack__item m-list-search__result-message m-stack__item--middle m-stack__item--center">
+                        <a href="#" (click)="showUpdateAddress(adrs,i)"
+                           class="m-portlet__nav-link btn btn-secondary m-btn  m-btn--icon m-btn--icon-only m-btn--pill">
+                            <i class="la la-edit"></i>
+                        </a>
+                        <a href="#" (click)="deleteAddress(adrs.id,i)"
+                           class="m-portlet__nav-link btn btn-secondary m-btn  m-btn--icon m-btn--icon-only m-btn--pill">
+                            <i class="la la-trash"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+</div>
