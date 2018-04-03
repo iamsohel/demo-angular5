@@ -1,4 +1,3 @@
-#CHECK DEFENCE FRONTEND APPLICATION
 
 VERSION 1.0
 Build with Angular 5.2
@@ -136,18 +135,5 @@ You'll see these resources be outputted and fingerprinted at the root of `dist/`
 -bundle-dependencies
 -extract-licenses
 ```
-
-
-**Configurations**
-
->Before building the application please set the application configurations located in  `./src/app/config/app.ts`;
-
-there are several configuration options 
-```
-companies:Array<{name:string}> = --> // Name of the companies
-apiEndPoint:string --> //Api Endponts
-graphClientID:String --> //Graph ClientID
-graphEndpoint: string -->//Graph Endpoint ('https://graph.microsoft.com/v1.0/me')
-graphScopes: string[]-->//Graph Scopes('Files.Read User.Read Mail.send');
     
 ```
